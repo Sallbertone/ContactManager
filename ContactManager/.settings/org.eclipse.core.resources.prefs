@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//WebContent/contacts-list.jsp=UTF-8
+encoding//src/pl/tatastruga/web/jdbc/Contact.java=UTF-8
+encoding//src/pl/tatastruga/web/jdbc/ContactControllerServlet.java=UTF-8
+encoding//src/pl/tatastruga/web/jdbc/ContactDBUtil.java=UTF-8

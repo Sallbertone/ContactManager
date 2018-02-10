@@ -1,0 +1,10 @@
+<Context>
+
+		<Resource name="jdbc/creall_CM" 
+		auth="Container" type="javax.sql.DataSource"
+		maxActive="20" maxIdle="5" maxWait="10000" username="creall_CMuser"
+		password="CMuser21g4P32" driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://s43.linuxpl.com/creall_CM?useSSL=false" />
+
+</Context>
+
