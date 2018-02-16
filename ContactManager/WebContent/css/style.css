@@ -1,0 +1,474 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	height: 100%;
+}
+
+body{
+	background-color: #f4f4f4;
+	color: #555555;
+	font-family: Verdena, Tahoma, Helvetica;
+	font-size: 14px;
+	line-height: 1.6em;
+	
+	min-height: 100%;
+	position: relative;
+}
+
+.container{
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+}
+
+
+header{
+	background: #35424a;
+	color: #ffffff;
+	padding-top: 30px;
+	border-bottom: #ff4000 3px solid;
+	min-height: 70px;
+}
+
+header a{
+	color: white;
+	text-decoration: none;
+}
+
+header li{
+	float: left;
+	display: inline;
+	padding: 0 20px 0 20px; 
+}
+
+header #branding{
+	float: left;
+}
+
+header nav{
+	float: right;
+	margin-top: 5px;
+}
+
+header .color{
+	color: #ff4000;
+}
+
+header a:hover{
+	color: #ff4000;
+}
+
+#addandsearch{
+	padding: 0px;
+	min-height: 180px;
+}
+
+#add{
+	float: left;
+	margin-top: 0px;
+	width: 45%;
+	text-align: center;
+}
+
+#search{
+	float: right;
+	margin-top: 15px;
+	width: 45%;	
+	text-align: center;
+}
+
+
+
+
+
+#search form input[type="search"]{
+	padding-left: 35px;
+	padding-right: 35px;
+	height: 45px;
+	font-size: 20px;
+	border: 1px solid #ff4000;
+	border-radius: 5px;
+	width: 100%;
+}
+
+#search form input[type="search"]:hover{
+
+	border: 1px solid #35424a;
+
+}
+
+#search form input[type="submit"]{
+	background: #35424a;
+	color: white;
+	font-size: 20px;
+	height: 45px;
+	padding-left: 35px;
+	padding-right:35px;
+
+	border: 1px solid black;
+	border-radius: 5px;
+
+	margin-top: 15px;
+	width: 100%;
+}
+
+#search input[type="submit"]:hover{
+	background: #ff4000;
+	color:  white;
+	border: 1px solid #35424a;
+}
+
+
+#add form input[type="submit"]{
+	background: #35424a;
+	color: white;
+	font-size: 20px;
+	height: 45px;
+	padding-left: 35px;
+	padding-right:35px;
+
+	border: 1px solid black;
+	border-radius: 5px;
+
+	margin-top: 15px;
+	width: 100%;
+
+}
+
+#add input[type="submit"]:hover{
+	background: #ff4000;
+	color:  white;
+	border: 1px solid #35424a;
+}
+
+
+	
+#viewform{
+	padding-bottom: 10px;
+	min-height: 20px;
+	text-align: center;
+}
+
+
+table{
+	padding-bottom: 10px;
+	min-height: 20px;
+	margin: 0 auto;
+}
+
+
+#viewform #radio form label{
+	color: #35424a;
+	font-size: 16px;
+	font-weight: bold;
+	padding-left: 5px;
+	padding-right: 15px;
+}
+
+#radio input[type="submit"]{
+	background: #35424a;
+	color: white;
+	height: 35px;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 16px;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+#radio input[type="submit"]:hover{
+	background: #ff4000;
+	color:  white;
+	border: 1px solid #35424a;
+
+
+}
+
+#result {
+	height: 250px;
+	width: 800px;
+    overflow:auto;
+    margin: 0px auto;
+
+
+}
+
+table th{
+	color: #35424a;
+	padding-left: 5px;
+	padding-right: 5px;
+    border: 1px solid grey;
+
+}
+
+table td{
+	padding-right: 5px;
+	padding-left: 15px;
+}
+
+table tr:nth-child(odd) {
+	background: #ddd;
+}
+
+table td a{
+	text-decoration: none;
+	color: #35424a;
+}
+
+.contact_action{
+	
+	color: #35424a;
+	padding-right: 5px;
+	padding-left: 5px;
+
+	border: 1px solid grey;
+	font-size: 13px;
+
+}
+
+#viewtable #result table tr:hover{
+	color: #ff4000;
+}
+
+#viewtable #result table td.contact_action:hover{
+	border: 1px solid black;
+	background: #ff4000;
+	color: black;
+}
+
+#viewform #radio form label:hover{
+	color: #ff4000;
+
+}
+
+#viewform #radio form input[type="radio"]:checked+label{
+	color: #ff4000;
+}
+
+#viewtable{
+	padding-bottom: 70px;
+}
+
+footer{
+
+	background: #35424a;
+	color: #ffffff;
+	border-top: #ff4000 3px solid;
+	border-bottom: #ff4000 3px solid;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	overflow: hidden;
+	width: 100%;
+	
+}
+
+#new-contact #add-form form  {
+margin-top: 35px;
+      }
+
+
+#new-contact #add-form form input[type="text"], form input[type="email"]{
+	padding-left: 35px;
+	padding-right: 35px;
+	height: 35px;
+	font-size: 15px;
+	border: 1px solid #35424a;
+	border-radius: 5px;
+	width: 50%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#new-contact #add-form form input[type="text"]:hover, form input[type="email"]:hover{
+	border: 1px solid #ff4000;
+
+}
+
+#new-contact #add-form form label.fields {
+      width: 150px;
+      margin-top: 20px;
+      float: left;
+      color: #35424a;
+      font-size: 17px;
+      text-align: right;
+      padding-right: 20px;
+}
+
+#new-contact #add-form #field-group {
+      width: 150px;
+      margin-top: 20px;
+      float: left;
+      color: #35424a;
+      font-size: 17px;
+      text-align: right;
+      padding-right: 20px;
+}
+
+#new-contact #add-form #list-group {
+
+      margin-top: 20px;
+      float: left;
+      color: #35424a;
+      font-size: 17px;
+      margin-bottom: 20px;
+}
+
+
+
+#new-contact #add-form form input[type="radio"]{
+
+}
+
+#new-contact #add-form form ul {
+		list-style-type: none;
+
+}
+
+#new-contact #add-form form li {
+	padding-bottom: 8px;
+
+}
+
+#new-contact #add-form p {
+		color: red;
+		margin-left: 18%;
+
+}
+
+#list-group  label.radio-label {
+	padding-left: 15px;
+}
+
+#list-group  label.radio-label:hover {
+	color: #ff4000;
+}
+
+#list-group  input[type="radio"]:checked+label {
+	font-weight: bolder;
+}
+
+#save-button {
+	clear: left;
+
+	text-align: center;
+
+}
+
+
+#save-button input[type="submit"] {
+	padding: 0px 15px;
+	height: 35px;
+	width: 20%;
+	background: #35424a;
+	color: white;
+	font-size: 16px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+#save-button input[type="submit"]:hover {
+	background: #ff4000;
+}
+
+#back-button {
+	clear: left;
+	margin-bottom: 25px;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 40px;
+
+}
+
+#back-button input[type="submit"] {
+	padding: 0px, 15px;
+	height: 35px;
+	width: 20%;
+	background: #35424a;
+	color: white;
+	font-size: 16px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+#back-button input[type="submit"]:hover {
+	background: #ff4000;
+}
+
+
+
+
+@media(max-width: 960px){
+
+	header #branding, header nav, header nav li{
+		float: none;
+		text-align: center;
+		width: 100%;
+		padding-top: 10px;
+	
+	}
+
+	header {
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+
+	#addandsearch, #add, #search{
+		float: none;
+		text-align: center;
+		width: 100%;
+
+	}
+
+	#addandsearch, #add {
+		padding-bottom: 10px;
+	}
+
+	#radio input{
+		margin-bottom: 20px;
+		margin-top: 5px;
+	}
+
+	#result {
+		float: none;
+		width: 100%;
+	}
+
+	
+
+}
+
+@media(max-width: 610px){
+
+	#new-contact #add-form form label.fields {
+         text-align: left;
+      
+    }
+
+    	#new-contact #add-form #field-group {
+         text-align: left;
+         width: 60px;
+      
+    }
+
+    #new-contact #add-form #list-group {
+
+      margin-top: 20px;
+      float: left;
+      color: #35424a;
+      font-size: 17px;
+	}
+
+	#back-button input[type="submit"] {
+	width: 120px;
+	}
+
+	#save-button input[type="submit"] {
+	width: 120px;
+	}
+
+}
