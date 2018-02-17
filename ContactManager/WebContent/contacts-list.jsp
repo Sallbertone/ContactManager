@@ -76,7 +76,7 @@
 				<c:forEach var="tempContact" items="${CONTACT_LIST}">
 		
 					<c:url var="tempLink" value="ContactControllerServlet" >
-						<c:param name="command" value="PREPOPULATE-EDIT-FORM"/>
+						<c:param name="command" value="PREPOPULATE"/>
 						<c:param name="contactID" value="${tempContact.id}"/>
 					</c:url>
 					
@@ -92,7 +92,7 @@
 					<td>
 					<form action="ContactControllerServlet">
 					<input type="hidden" name="id" value="${tempContact.id}">
-					<input type="hidden" name="command" value="PREPOPULATE-EDIT-FORM">
+					<input type="hidden" name="command" value="PREPOPULATE">
 					<input type="submit" value="EDIT">
 					</form>
 					</td>

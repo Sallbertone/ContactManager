@@ -31,6 +31,7 @@
 		<div id="add-form">
 			<form action="ContactControllerServlet" method="POST">
 				<input type="hidden" name="command" value="ADD">
+				
 				<label class="fields">First name:</label><input type="text" placeholder="First name" name="firstName"><br>
 				<p>${FIRST_NAME_INVALID}</p>
 				<label class="fields">Last name:</label><input type="text" placeholder="Last name" name="lastName"><br>

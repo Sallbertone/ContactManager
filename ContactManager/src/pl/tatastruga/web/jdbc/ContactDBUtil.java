@@ -116,6 +116,80 @@ public class ContactDBUtil
 		}
 		
 	}
+
+	public Contact getContactById(String theID) throws Exception
+	{
+		Contact editedContact = null;
+		
+		Connection myConn = null;
+		PreparedStatement prepStmt = null;
+		ResultSet myRs = null;
+		
+		
+		try
+		{
+			int id = Integer.parseInt(theID);
+			
+			myConn = dataSource.getConnection();
+			
+			String sql = "SELECT * FROM contacts WHERE id=?";
+			
+			prepStmt = myConn.prepareStatement(sql);
+			
+			prepStmt.setInt(1, id);
+			
+			myRs = prepStmt.executeQuery();
+			
+			if(myRs.next())
+			{
+				
+				String firstName = myRs.getString("first_name");
+				String lastName = myRs.getString("last_name");
+				String email = myRs.getString("email");
+				String phoneNumber = myRs.getString("phone_number");
+				String circle = myRs.getString("circle");
+						
+				editedContact = new Contact(id, firstName, lastName, email, phoneNumber, circle);
+			}
+			else
+				throw new Exception("Could not find Contact ID: " + id);
+			
+			return editedContact;
+		}
+		finally
+		{
+			close(myConn, prepStmt, myRs);
+		}
+	}
+
+	public void updateContact(Contact theContact) throws SQLException 
+	{
+		Connection myConn = null;
+		PreparedStatement prepStmt = null;
+		
+		try
+		{
+			myConn = dataSource.getConnection();
+			String sql = "UPDATE contacts SET first_name = ?, last_name = ?, email = ?, phone_number = ?, circle = ? WHERE id = ?";
+			prepStmt = myConn.prepareStatement(sql);
+			
+			prepStmt.setString(1, theContact.getFirstName());
+			prepStmt.setString(2, theContact.getLastName());
+			prepStmt.setString(3, theContact.getEmail());
+			prepStmt.setString(4, theContact.getPhoneNumber());
+			prepStmt.setString(5, theContact.getCircle());
+			prepStmt.setInt(6, theContact.getId());
+						
+			prepStmt.execute();
+		} 
+		
+		
+		finally
+		{
+			close(myConn, prepStmt, null);
+		}
+		
+	}
 	
 	
 }
