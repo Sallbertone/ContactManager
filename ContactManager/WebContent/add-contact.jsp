@@ -32,21 +32,21 @@
 			<form action="ContactControllerServlet" method="POST">
 				<input type="hidden" name="command" value="ADD">
 				
-				<label class="fields">First name:</label><input type="text" placeholder="First name" name="firstName"><br>
+				<label class="fields">First name:</label><input type="text" placeholder="First name" value="${TEMP_CONTACT.firstName}" name="firstName"><br>
 				<p>${FIRST_NAME_INVALID}</p>
-				<label class="fields">Last name:</label><input type="text" placeholder="Last name" name="lastName"><br>
+				<label class="fields">Last name:</label><input type="text" placeholder="Last name" value="${TEMP_CONTACT.lastName}" name="lastName"><br>
 				<p>${LAST_NAME_INVALID}</p>
-				<label class="fields">E-mail address:</label><input type="email" placeholder="E-mail" name="email"><br>
+				<label class="fields">E-mail address:</label><input type="email" placeholder="E-mail" value="${TEMP_CONTACT.email}" name="email"><br>
 				<p>${EMAIL_INVALID}</p>
-				<label class="fields">Mobile:</label><input type="text" placeholder="Phone number" name="phoneNumber"><br>
+				<label class="fields">Mobile:</label><input type="text" placeholder="Phone number" value="${TEMP_CONTACT.phoneNumber}" name="phoneNumber"><br>
 				<p>${PHONE_NUMBER_INVALID}</p>
 				<div id="field-group">Group:</div>
 					<div id="list-group">
 						<ul>
-							<li><input type="radio" name="circle" value="friend" id="1"><label class="radio-label" for="1">Friends</label></li>
-							<li><input type="radio" name="circle" value="family" id="2"><label class="radio-label" for="2">Family</label></li>
-							<li><input type="radio" name="circle" value="coworker" id="3"><label class="radio-label" for="3">Coworkers</label></li>
-							<li><input type="radio" name="circle" value="other" id="4" checked><label class="radio-label" for="4">Others</label></li>
+							<li><input type="radio" name="circle" value="friend" id="1" ${TEMP_CONTACT.circle == 'friend'? 'checked' : ''}><label class="radio-label" for="1">Friends</label></li>
+							<li><input type="radio" name="circle" value="family" id="2" ${TEMP_CONTACT.circle == 'family'? 'checked' : ''}><label class="radio-label" for="2">Family</label></li>
+							<li><input type="radio" name="circle" value="coworker" id="3" ${TEMP_CONTACT.circle == 'coworker'? 'checked' : ''}><label class="radio-label" for="3">Coworkers</label></li>
+							<li><input type="radio" name="circle" value="other" id="4" ${TEMP_CONTACT.circle == 'other'? 'checked' : ''}><label class="radio-label" for="4">Others</label></li>
 						</ul>
 					</div>
 				<div id="save-button">

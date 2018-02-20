@@ -241,8 +241,6 @@ public class ContactDBUtil
 				
 				sortedList.add(tempContact);
 			}
-			
-			
 		} 
 		
 		finally
@@ -250,10 +248,56 @@ public class ContactDBUtil
 			close(myConn, prepStmt, myRs);
 		}
 		
-		
-		
 		return sortedList;
 	}
+
+	public List<Contact> searchContact(String searchedInput) throws SQLException
+	{
+		List<Contact> foundList = new ArrayList<>();
+		
+		Connection myConn = null;
+		PreparedStatement prepStmt = null;
+		ResultSet myRs = null;
+		
+		try
+		{
+			
+			myConn = dataSource.getConnection();
+			String sql = "SELECT DISTINCT * FROM contacts WHERE first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR phone_number LIKE ?";
+			prepStmt = myConn.prepareStatement(sql);
+			prepStmt.setString(1, searchedInput);
+			prepStmt.setString(2, searchedInput);
+			prepStmt.setString(3, searchedInput);
+			prepStmt.setString(4, searchedInput);
+			
+			myRs = prepStmt.executeQuery();
+			
+			while (myRs.next())
+			{
+				int id = myRs.getInt("id");
+				String firstName = myRs.getString("first_name");
+				String lastName = myRs.getString("last_name");
+				String email = myRs.getString("email");
+				String phoneNumber = myRs.getString("phone_number");
+				String circle = myRs.getString("circle");
+				
+				Contact tempContact = new Contact(id, firstName, lastName, email, phoneNumber, circle);
+				
+				foundList.add(tempContact);
+			}
+			
+			
+		} 
+		finally
+		{
+			close(myConn, prepStmt, myRs);
+		}
+
+		
+		return foundList;
+	}
+
+
 	
 	
 }

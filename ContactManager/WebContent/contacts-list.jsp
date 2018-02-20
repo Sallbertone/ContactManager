@@ -30,7 +30,8 @@
 <section id="addandsearch">
 	<div class="container">
 		<div id="search">
-			<form action="QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ">
+			<form action="ContactControllerServlet" method="POST">
+				<input type="hidden" name="command" value="SEARCH">
 				<input type="search" placeholder="Search for your contact..." name="search">
 				<input type="submit" value="SEARCH" >
 			</form>

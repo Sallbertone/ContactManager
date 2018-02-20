@@ -106,8 +106,7 @@ public class ContactControllerServlet extends HttpServlet
 					addContact(request, response);
 				else
 				{
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/add-contact.jsp");
-					dispatcher.forward(request, response);
+					savingInput(request, response);
 				}
 				break;
 			
@@ -119,6 +118,10 @@ public class ContactControllerServlet extends HttpServlet
 					getContactById(request, response);
 
 				}
+				break;	
+				
+			case "SEARCH":
+				searchContact(request, response);
 				break;	
 				
 			default:
@@ -133,6 +136,37 @@ public class ContactControllerServlet extends HttpServlet
 	}
 
 
+
+	private void searchContact(HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+		String searchedInput = "%"+ request.getParameter("search") + "%";
+	
+		List<Contact> foundList = contactDBUtil.searchContact(searchedInput);
+
+		request.setAttribute("CONTACT_LIST", foundList);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/contacts-list.jsp");
+
+		dispatcher.forward(request, response);
+		
+	}
+
+	private void savingInput(HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String email = request.getParameter("email");
+		String phoneNumber = request.getParameter("phoneNumber");
+		String circle = request.getParameter("circle");
+		
+		Contact tempContact = new Contact(firstName, lastName, email, phoneNumber, circle);
+		request.setAttribute("TEMP_CONTACT", tempContact);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/add-contact.jsp");
+
+		dispatcher.forward(request, response);
+		
+	}
 
 	private void sortByCircle(HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
