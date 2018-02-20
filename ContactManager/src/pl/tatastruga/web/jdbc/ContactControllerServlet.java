@@ -60,6 +60,19 @@ public class ContactControllerServlet extends HttpServlet
 			case "PREPOPULATE":
 				getContactById(request, response);
 				break;
+				
+			case "DELETE":
+				deleteContact(request, response);
+				break;
+				
+			case "SORT":
+				if("allcircles".equals(request.getParameter("circle")))
+					listContact(request, response);
+				else
+				{
+					sortByCircle(request, response);
+				}
+				break;
 
 			default:
 				listContact(request, response);
@@ -72,6 +85,7 @@ public class ContactControllerServlet extends HttpServlet
 		}
 
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
@@ -118,6 +132,32 @@ public class ContactControllerServlet extends HttpServlet
 		}
 	}
 
+
+
+	private void sortByCircle(HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+		String circle = request.getParameter("circle");
+		
+		List<Contact> sortedList = contactDBUtil.sortByCircle(circle);
+
+		request.setAttribute("CONTACT_LIST", sortedList);
+		
+		request.setAttribute("GROUP", circle);
+				
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/contacts-list.jsp");
+
+		dispatcher.forward(request, response);
+		
+	}
+
+	
+	private void deleteContact(HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+		int id = Integer.parseInt(request.getParameter("contactID"));
+		contactDBUtil.deleteContact(id);
+		response.sendRedirect(request.getContextPath() + "/ContactControllerServlet?command=LIST");
+	}
+	
 	private void updateContact(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException
 	{
 		int id = Integer.parseInt((request.getParameter("contactID")).trim());
@@ -282,7 +322,10 @@ public class ContactControllerServlet extends HttpServlet
 		List<Contact> contactList = contactDBUtil.getContacts();
 
 		request.setAttribute("CONTACT_LIST", contactList);
-
+		
+		String circle = "allcircles";
+		request.setAttribute("GROUP", circle);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/contacts-list.jsp");
 
 		dispatcher.forward(request, response);

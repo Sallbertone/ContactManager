@@ -48,12 +48,14 @@
 <section id="viewform">
 	<div class="container">
 		<div id="radio">
-			<form action="xxxxxxxxxxxx serwletpage xxxxxxxxxx">
-				<input type="radio" name="circle" value="friend" id="1"><label for="1">Friends</label> 
-				<input type="radio" name="circle" value="family" id="2"> <label for="2">Family</label> 
-				<input type="radio" name="circle" value="coworker" id="3"> <label for="3">Coworkers</label>
-				<input type="radio" name="circle" value="other" id="4"> <label for="4">Others</label>
-				<input type="radio" name="circle" value="allcircles" id="5" checked> <label for="5">All contacts</label> 
+			<form action="ContactControllerServlet" method="GET">
+				<input type="hidden" name="command" value="SORT">	
+				
+				<input type="radio" name="circle" value="friend" id="1" ${GROUP == 'friend'? 'checked':''}><label for="1">Friends</label> 
+				<input type="radio" name="circle" value="family" id="2" ${GROUP == 'family'? 'checked':''}> <label for="2">Family</label> 
+				<input type="radio" name="circle" value="coworker" id="3" ${GROUP == 'coworker'? 'checked':''}> <label for="3">Coworkers</label>
+				<input type="radio" name="circle" value="other" id="4" ${GROUP == 'other'? 'checked':''}> <label for="4">Others</label>
+				<input type="radio" name="circle" value="allcircles" id="5" ${GROUP == 'allcircles'? 'checked':''}> <label for="5">All contacts</label> 
 				<input type="submit" value="Show contacts"> 
 			</form> 
 		</div>
@@ -80,6 +82,10 @@
 						<c:param name="contactID" value="${tempContact.id}"/>
 					</c:url>
 					
+					<c:url var="tempLink_delete" value="ContactControllerServlet" >
+						<c:param name="command" value="DELETE"/>
+						<c:param name="contactID" value="${tempContact.id}"/>
+					</c:url>
 
 				<tr>
 					<td> ${tempContact.firstName} </td>
@@ -98,7 +104,7 @@
 					</td>
 --%>
 					<td class="contact_action"><a href="${tempLink}">EDIT</a></td>
-					<td class="contact_action">DELETE</td>
+					<td class="contact_action"><a href="${tempLink_delete}" onclick="return confirm('Are you sure you want to delete this Contact?');">DELETE</a></td>
 					<td class="contact_action">MESSAGE</td>
 				</tr>
 		

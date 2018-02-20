@@ -190,6 +190,70 @@ public class ContactDBUtil
 		}
 		
 	}
+
+	public void deleteContact(int id) throws Exception
+	{
+		Connection myConn = null;
+		PreparedStatement prepStmt = null;
+		
+		try
+		{
+			myConn = dataSource.getConnection();
+			String sql = "DELETE FROM contacts WHERE id = ?";
+			prepStmt = myConn.prepareStatement(sql);
+			prepStmt.setInt(1,id);
+			prepStmt.execute();
+		} 
+		finally
+		{
+			close(myConn, prepStmt, null);
+		}
+		
+	}
+
+	public List<Contact> sortByCircle(String circle) throws Exception
+	{
+		List<Contact> sortedList = new ArrayList<>();
+		
+		Connection myConn = null;
+		PreparedStatement prepStmt = null;
+		ResultSet myRs = null;
+		
+		try
+		{
+			myConn = dataSource.getConnection();
+			String sql = "Select * FROM contacts WHERE circle = ?";
+			prepStmt = myConn.prepareStatement(sql);
+			prepStmt.setString(1, circle);
+			
+			myRs = prepStmt.executeQuery();
+			
+			while(myRs.next())
+			{
+				int id = myRs.getInt("id");
+				String firstName = myRs.getString("first_name");
+				String lastName = myRs.getString("last_name");
+				String email = myRs.getString("email");
+				String phoneNumber = myRs.getString("phone_number");
+				circle = myRs.getString("circle");
+				
+				Contact tempContact = new Contact(id, firstName, lastName, email, phoneNumber, circle);
+				
+				sortedList.add(tempContact);
+			}
+			
+			
+		} 
+		
+		finally
+		{
+			close(myConn, prepStmt, myRs);
+		}
+		
+		
+		
+		return sortedList;
+	}
 	
 	
 }
